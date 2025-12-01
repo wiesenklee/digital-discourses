@@ -11,21 +11,43 @@
 <body>
   <header class="container">
     <hgroup>
-      <h2>Open Keyword Discourses</h2>
+      <h1>Open Keyword Discourses</h1>
       <p>A small data and design project at FH Aachen</p>
     </hgroup>
   </header>
   <main class="container">
-    <div class="container" style="height: 500px; padding: 10px;"><canvas id="chart"></canvas></div>
-    <form action="javascript:void(0);">
-      <fieldset role="group">
-        <input id="keyword-input" type="text" placeholder="Keyword" minlength="3" required />
-        <input id="keyword-button" type="submit" value="Add" />
-      </fieldset>
-      <input id="remove-keyword-button" type="submit" value="Remove last" />
-    </form>
+    <section>
+      <h3>Playground</h3>
+      <p>Test some keywords of your own on raw data.</p>
+      <article>
+        <div class="container" style="height: 500px; padding: 10px;"><canvas id="playground-chart"></canvas></div>
+        <footer>
+          <button id="p-lock-scale-button">Lock Scale</button>
+          <button id="remove-keyword-button" class="secondary">Remove last</button>
+        </footer>
+      </article>
+      <form action="javascript:void(0);">
+        <fieldset role="group">
+          <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
+          <input id="add-keyword-button" type="submit" value="Add" />
+        </fieldset>
+      </form>
+    </section>
+    <section>
+      <h3>Examples</h3>
+      <p>Here we have prepared two discourses with preselected keywords side by side.</p>
+      <article>
+        <div class="container" style="height: 300px; padding: 10px;"><canvas id="e1-chart"></canvas></div>
+        <div class="container" style="height: 350px; padding: 10px;"><canvas id="e2-chart"></canvas></div>
+        <footer>
+          <button id="e-lock-scale-button">Unlock Scale</button>
+        </footer>
+      </article>
+    </section>
   </main>
-  <script type="module" src="chart.ts"></script>
+  <script type="module" src="app.ts"></script>
+  <script type="module" src="playground.ts"></script>
+  <script type="module" src="examples.ts"></script>
 </body>
 
 </html>
