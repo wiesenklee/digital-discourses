@@ -17,37 +17,47 @@
   </header>
   <main class="container">
     <section>
-      <h3>Playground</h3>
+      <h2>Playground</h2>
       <p>Test some keywords of your own on raw data.</p>
       <article>
+        <div id="p-suggestions"></div>
+        <form action="javascript:void(0);">
+          <fieldset role="group">
+            <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
+            <input id="check-keyword-button" class="outline" type="submit" value="Check" />
+            <input id="add-keyword-button" class="outline" type="submit" value="Add" />
+          </fieldset>
+        </form>
         <div class="container" style="height: 500px; padding: 10px;"><canvas id="playground-chart"></canvas></div>
         <footer>
           <button id="p-lock-scale-button">Lock Scale</button>
-          <button id="remove-keyword-button" class="secondary">Remove last</button>
         </footer>
       </article>
-      <form action="javascript:void(0);">
-        <fieldset role="group">
-          <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
-          <input id="add-keyword-button" type="submit" value="Add" />
-        </fieldset>
-      </form>
     </section>
+    <br />
     <section>
-      <h3>Examples</h3>
+      <h2>Discourses</h2>
       <p>Here we have prepared two discourses with preselected keywords side by side.</p>
       <article>
-        <div class="container" style="height: 300px; padding: 10px;"><canvas id="e1-chart"></canvas></div>
-        <div class="container" style="height: 350px; padding: 10px;"><canvas id="e2-chart"></canvas></div>
+        <div class="grid">
+          <select name="e1-select">
+            <option>Migration</option>
+          </select>
+          <select name="e2-select">
+            <option>Klimawandel</option>
+          </select>
+        </div>
+        <div class="container" style="height: 300px; padding: 10px 10px 0px 10px;"><canvas id="e1-chart"></canvas></div>
+        <div class="container" style="height: 300px; padding: 0px 10px 10px 10px;"><canvas id="e2-chart"></canvas></div>
         <footer>
-          <button id="e-lock-scale-button">Unlock Scale</button>
+          <button id="e-lock-scale-button" class="secondary">Unlock Scale</button>
         </footer>
       </article>
     </section>
   </main>
   <script type="module" src="app.ts"></script>
   <script type="module" src="playground.ts"></script>
-  <script type="module" src="examples.ts"></script>
+  <script type="module" src="discourse.ts"></script>
 </body>
 
 </html>

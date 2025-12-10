@@ -1,1 +1,10 @@
 @import 'npm:@picocss/pico';
+
+.chip {
+    background-color: #e7e7e7;
+    border-radius: .25rem;
+    padding: 1px 4px 1px 4px;
+    margin: 0px 6px 6px 0px;
+    cursor: pointer;
+    display: inline-block;
+}
