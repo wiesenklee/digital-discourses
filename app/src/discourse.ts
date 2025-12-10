@@ -1,7 +1,7 @@
-import { Chart, ChartItem, ChartOptions } from 'chart.js';
+import { Chart, ChartItem, ChartOptions } from 'chart.js/auto'
 import 'chartjs-adapter-date-fns';
 
-import { getBpkData } from './app';
+import { getBpkData } from './bpk';
 
 (async function () {
   const bpkData = await getBpkData();
