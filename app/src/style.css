@@ -1,4 +1,5 @@
-@import 'npm:@picocss/pico';
+@import 'npm:@picocss/pico/css/pico.css';
+@import 'npm:@picocss/pico/css/pico.colors.css';
 
 .chip {
     background-color: #e7e7e7;

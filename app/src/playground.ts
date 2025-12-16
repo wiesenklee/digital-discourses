@@ -1,12 +1,11 @@
-import { Chart, ChartItem } from 'chart.js/auto'
-import 'chartjs-adapter-date-fns'
+import Chart, { ChartItem } from 'chart.js/auto'
 
-import { getBpkData } from './bpk';
+import { getBpkData } from './app';
 
 (async function () {
   const bpkData = await getBpkData();
 
-  var chart = new Chart(
+  var chart1 = new Chart(
     document.getElementById('playground-chart') as ChartItem,
     {
       type: 'bar',
@@ -52,8 +51,8 @@ import { getBpkData } from './bpk';
     bpkData.forEach((d: any) => {
       countData.push(d.transcript.matchAll(new RegExp(keyword, "gi")).toArray().length)
     });
-    chart.data.datasets.push({ label: `${keyword}`, data: countData });
-    chart.update();
+    chart1.data.datasets.push({ label: `${keyword}`, data: countData });
+    chart1.update();
   });
   checkKeywordButton?.addEventListener("click", (_) => {
     var keyword = keywordInput.value;
@@ -62,22 +61,22 @@ import { getBpkData } from './bpk';
     bpkData.forEach((d: any) => {
       countData.push(d.transcript.matchAll(new RegExp(keyword, "gi")).toArray().length)
     });
-    chart.data.datasets.splice(1, 1, ({ label: `${keyword}`, data: countData }));
-    chart.update();
+    chart1.data.datasets.splice(1, 1, ({ label: `${keyword}`, data: countData }));
+    chart1.update();
   });
 
   var lockScale = false;
   lockScaleButton?.addEventListener("click", (_) => {
     if (lockScale) {
-      chart.options.scales!.y!.max = undefined;
+      chart1.options.scales!.y!.max = undefined;
       lockScaleButton.textContent = "Lock Scale";
     } else {
-      chart.options.scales!.y!.max = chart.scales.y.max;
+      chart1.options.scales!.y!.max = chart1.scales.y.max;
       lockScaleButton.textContent = "Unlock Scale";
     }
     lockScaleButton.classList.toggle("secondary")
     lockScale = !lockScale;
-    chart.update();
+    chart1.update();
   });
 
 

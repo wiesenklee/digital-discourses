@@ -1,15 +1,14 @@
-import { Chart, ChartItem, ChartOptions } from 'chart.js/auto'
-import 'chartjs-adapter-date-fns';
+import Chart, { ChartItem, ChartOptions } from 'chart.js/auto'
 
-import { getBpkData } from './bpk';
+import { getBpkData } from './app';
 
 (async function () {
   const bpkData = await getBpkData();
 
-  const e1Keywords = ["migration", "asyl", "einwanderung", "ausländer", "abschiebung", "rückführung"]
-  // const e1Colors = ["#a73636ff", "#a73636cb", "#a736369a", "#c9d33aff", "#52bdb7ff", "#52bdb8a1"]
-  const e2Keywords = ["klimakrise", "klimawandel", "emission", "co2", "erneuerbare", "solar"]
-  // const e2Colors = ["#50a736ff", "#50a736ad", "#d18b49ff", "#d18b49b7", "#4991ccff", "#4991ccad"]
+  const e1Keywords = ["migration", "asyl", "einwanderung", "abschiebung", "rückführung", "ausländer"]
+  const e1Colors = ["#54A4C8", "#365E92", "#506072", "#B4A193", "#695B53", "#454136"]
+  const e2Keywords = ["klimakrise", "emission", "co2", "klimawandel", "erneuerbare", "solar"]
+  const e2Colors = ["#897956", "#96683F", "#D0933B", "#5A8356", "#F26A0E", "#FFDA3C"]
 
   const chartOptions: ChartOptions = {
     responsive: true,
@@ -64,7 +63,7 @@ import { getBpkData } from './bpk';
             return {
               label: k,
               data: bpkData.map((row: any) => row.transcript.matchAll(new RegExp(k, "gi")).toArray().length),
-              // backgroundColor: e1Colors[i],
+              backgroundColor: e1Colors[i],
             }
           })
         ]
@@ -84,7 +83,7 @@ import { getBpkData } from './bpk';
             return {
               label: k,
               data: bpkData.map((row: any) => row.transcript.matchAll(new RegExp(k, "gi")).toArray().length),
-              // backgroundColor: e2Colors[i],
+              backgroundColor: e2Colors[i],
             }
           })
         ]

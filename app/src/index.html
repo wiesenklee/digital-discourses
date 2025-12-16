@@ -4,37 +4,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Keyword Discourses</title>
+  <title>Open Discourses</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header class="container">
-    <hgroup>
-      <h1>Open Keyword Discourses</h1>
-      <p>A small data and design project at FH Aachen</p>
-    </hgroup>
+    <nav>
+      <ul>
+        <li>
+          <hgroup>
+            <h1>Open Discourses</h1>
+            <p>A small data and design project at FH Aachen</p>
+          </hgroup>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button id="button-introduction">How to use it</button>
+        </li>
+      </ul>
+    </nav>
+    <hr />
+
   </header>
   <main class="container">
-    <section>
-      <h2>Playground</h2>
-      <p>Test some keywords of your own on raw data.</p>
-      <article>
-        <div id="p-suggestions"></div>
-        <form action="javascript:void(0);">
-          <fieldset role="group">
-            <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
-            <input id="check-keyword-button" class="outline" type="submit" value="Check" />
-            <input id="add-keyword-button" class="outline" type="submit" value="Add" />
-          </fieldset>
-        </form>
-        <div class="container" style="height: 500px; padding: 10px;"><canvas id="playground-chart"></canvas></div>
-        <footer>
-          <button id="p-lock-scale-button">Lock Scale</button>
-        </footer>
-      </article>
-    </section>
-    <br />
     <section>
       <h2>Discourses</h2>
       <p>Here we have prepared two discourses with preselected keywords side by side.</p>
@@ -54,9 +48,43 @@
         </footer>
       </article>
     </section>
+    </br>
+    <section>
+      <h2>Playground</h2>
+      <p>Test some keywords of your own on raw data.</p>
+      <article>
+        <div id="p-suggestions"></div>
+        <form action="javascript:void(0);">
+          <fieldset role="group">
+            <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
+            <input id="check-keyword-button" class="outline" type="submit" value="Check" />
+            <input id="add-keyword-button" class="outline" type="submit" value="Add" />
+          </fieldset>
+        </form>
+        <div class="container" style="height: 500px; padding: 10px;"><canvas id="playground-chart"></canvas></div>
+        <footer>
+          <button id="p-lock-scale-button">Lock Scale</button>
+        </footer>
+      </article>
+    </section>
   </main>
+  <script type="module" src="app.ts"></script>
   <script type="module" src="playground.ts"></script>
   <script type="module" src="discourse.ts"></script>
 </body>
+<dialog id="dialog-introduction">
+  <article>
+    <header>
+      <button id="button-close-introduction" aria-label="Close" rel="prev"></button>
+      <p>
+        <strong>💡 Introduction</strong>
+      </p>
+    </header>
+    <img style="height: 400" />
+    <div>
+      There will be multiple slides with images explaining all parts of this little application.
+    </div>
+  </article>
+</dialog>
 
 </html>
