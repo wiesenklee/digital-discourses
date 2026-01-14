@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-container">
 
 <head>
   <meta charset="utf-8">
@@ -9,30 +9,35 @@
 </head>
 
 <body>
-  <header class="container">
-    <nav>
-      <ul>
-        <li>
-          <hgroup>
-            <h1>Open Discourses</h1>
-            <p>A small data and design project at FH Aachen</p>
-          </hgroup>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <button id="button-introduction">How to use it</button>
-        </li>
-      </ul>
-    </nav>
-    <hr />
+  <main class="container" style="padding: 0">
+    <section id="section-0" style="display: flex; flex-direction: column; padding-top: 0;">
+      <div style="flex: 1; rotate: 180deg;">
+        <canvas id="landing-chart"></canvas>
+      </div>
+      <div>
+        <hgroup>
+          <h1>Digitale Diskurse</h1>
+          <p>Diskursanalyse anhand von Schlagwörtern</p>
+        </hgroup>
+        <p style="width: 40rem;">Ob Rechtsruck, Klimafragen oder Geschlechtergerechtigkeit - Trends bestimmen
+          Gesellschaft und Politik.
+          Wir haben an öffentlichen Daten untersucht, wie sich Themen und Diskurse in den letzten 5 Jahren
+          entwickelt haben.</p>
+        <button id="button-nav-1">Reinschauen<span style="padding-left: 16px;">↓</span></button>
+      </div>
+      <hr />
+    </section>
 
-  </header>
-  <main class="container">
-    <section>
-      <h2>Discourses</h2>
-      <p>Here we have prepared two discourses with preselected keywords side by side.</p>
-      <article>
+    <section id="section-1">
+      <div>
+        <h2>Vorbereitete Diskurse</h2>
+        <p>Durch das zusammenschließen von mehreren Schlagwörtern versuchen wir bestimmte Diskurse
+          besser erkennen zu
+          können. Hier kannst Du aus mehreren Themen zwei direkt vergleichen. Zur Einordnung werden außerdem wichtige
+          Ereignisse angezeigt.
+        <p>
+      </div>
+      <article style="height: 80%; display: flex; flex-direction: column;">
         <div class="grid">
           <select name="e1-select">
             <option>Migration</option>
@@ -41,37 +46,53 @@
             <option>Klimawandel</option>
           </select>
         </div>
-        <div class="container" style="height: 300px; padding: 10px 10px 0px 10px;"><canvas id="e1-chart"></canvas></div>
-        <div class="container" style="height: 300px; padding: 0px 10px 10px 10px;"><canvas id="e2-chart"></canvas></div>
-        <footer>
-          <button id="e-lock-scale-button" class="secondary">Unlock Scale</button>
+        <div style="flex: 1">
+          <div class="container" style="height: 50%;"><canvas id="e1-chart"></canvas>
+          </div>
+          <div class="container" style="height: 50%;"><canvas id="e2-chart"></canvas>
+          </div>
+        </div>
+        <footer style="display: flex; justify-content: center;">
+          <button id="button-nav-2">Selber Testen<span style="padding-left: 16px;">↓</span></button>
         </footer>
       </article>
     </section>
-    </br>
-    <section>
+
+    <section id="section-2">
       <h2>Playground</h2>
-      <p>Test some keywords of your own on raw data.</p>
-      <article>
-        <div id="p-suggestions"></div>
-        <form action="javascript:void(0);">
-          <fieldset role="group">
+      <p>Hier kannst du kreativ werden und selber Schlagwörter eingeben. Zur Anregung gibt es auch zufällige Vorschläge.
+      </p>
+      <article style="height: 80%; display: flex; flex-direction: column;">
+        <form action="javascript:void(0);" style="display: flex; flex-direction: row;; ">
+          <fieldset role="group" style="margin-right: 8px;">
             <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
-            <input id="check-keyword-button" class="outline" type="submit" value="Check" />
-            <input id="add-keyword-button" class="outline" type="submit" value="Add" />
+            <input id="check-keyword-button" type="submit" value="Testen" />
+          </fieldset>
+          <fieldset role="group" style="flex: 1;">
+            <input id="add-keyword-button" class="secondary" type="submit" value="Speichern" />
+            <input id="delete-keyword-button" class="secondary" type="submit" value="Zurücksetzten" />
           </fieldset>
         </form>
-        <div class="container" style="height: 500px; padding: 10px;"><canvas id="playground-chart"></canvas></div>
+        <div style="display: flex; align-items: center;">
+          <div id="p-suggestions"></div>
+          <span id="new-suggestions" class="chip"
+            style="margin: 0 16 8 0; background-color: #8b8a8aff; color: white;">Mehr
+            Vorschläge</span>
+        </div>
+        <hr />
+        <div class="container" style="height: 100%"><canvas id="playground-chart"></canvas></div>
         <footer>
-          <button id="p-lock-scale-button">Lock Scale</button>
+          <input type="checkbox" role="switch" id="p-auto-zoom" enabled>Auto Zoom</button>
         </footer>
       </article>
     </section>
   </main>
+
   <script type="module" src="app.ts"></script>
-  <script type="module" src="playground.ts"></script>
   <script type="module" src="discourse.ts"></script>
+  <script type="module" src="playground.ts"></script>
 </body>
+
 <dialog id="dialog-introduction">
   <article>
     <header>
