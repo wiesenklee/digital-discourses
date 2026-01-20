@@ -1,8 +1,9 @@
-import Chart, { ChartEvent, ChartItem, ChartOptions } from "chart.js/auto";
-import { getBpkData, primaryColor } from "./app";
+import 'chartjs-adapter-date-fns'
+import Chart, { type ChartEvent, type ChartItem, type ChartOptions } from "chart.js/auto";
+import bpk from '../bpk.json'
 
 (async function () {
-  const bpkData = await getBpkData();
+  const bpkData = (bpk as { data: Array<object> })["data"];
 
   const e1Keywords = [
     "migration",
@@ -68,9 +69,10 @@ import { getBpkData, primaryColor } from "./app";
   ]
 
   function drawTimeEvents(chart: Chart) {
-    const bottom = Number(chart.id) === 2;
+    const bottom = Number(chart.id) === 3;
     const ctx = chart.ctx;
-    const xAxis = chart.scales.x;
+    const xAxis = chart.scales.x!;
+    const yAxis = chart.scales.y!;
 
     ctx.save();
     ctx.strokeStyle = "#a1a1a179";
@@ -80,16 +82,16 @@ import { getBpkData, primaryColor } from "./app";
     let depth = 1;
     let drawShowEvent: Array<() => void> = new Array();
     timeEvents.forEach((t, i) => {
-      const xValue = xAxis.getPixelForValue(t.date);
+      const xValue = xAxis!.getPixelForValue(t.date);
       ctx.beginPath();
-      ctx.moveTo(xValue, chart.scales.y.top);
-      ctx.lineTo(xValue, chart.scales.y.bottom);
+      ctx.moveTo(xValue, yAxis.top);
+      ctx.lineTo(xValue, yAxis.bottom);
       ctx.stroke();
       ctx.closePath();
       if (bottom) {
-        let yValue = chart.scales.y.top + 20;
+        let yValue = yAxis.top + 20;
         // Check if two timeEvents are near, only works for ordered array
-        if (i > 0 && Math.abs(xAxis.getPixelForValue(timeEvents[i - 1].date) - xValue) < 30) {
+        if (i > 0 && Math.abs(xAxis!.getPixelForValue(timeEvents[i - 1]!.date) - xValue) < 30) {
           yValue += 25 * depth;
           depth++;
         } else depth = 1;
@@ -126,7 +128,7 @@ import { getBpkData, primaryColor } from "./app";
 
   function onHover(e: ChartEvent, _: any, c: Chart) {
     if (e.native !== null) {
-      const xLableIndex = c.getElementsAtEventForMode(e.native, "index", { axis: 'x' }, true)[0].index;
+      const xLableIndex = c.getElementsAtEventForMode(e.native, "index", { axis: 'x' }, true)[0]!.index;
       const xLabel = c.data.labels![xLableIndex] as string;
       const xIndex = Date.parse(xLabel);
       if (timeEvents.find((event) => event.date == xIndex)) {
@@ -172,7 +174,7 @@ import { getBpkData, primaryColor } from "./app";
       }
     }
   };
-  var chart1 = new Chart(document.getElementById("e1-chart") as ChartItem, {
+  let chart1 = new Chart(document.getElementById("e1-chart") as ChartItem, {
     type: "bar",
     data: {
       labels: bpkData.map((row: any) => row["date_y-m"]),
@@ -208,7 +210,8 @@ import { getBpkData, primaryColor } from "./app";
       },
     ],
   });
-  var chart2 = new Chart(document.getElementById("e2-chart") as ChartItem, {
+  console.log(chart1)
+  let chart2 = new Chart(document.getElementById("e2-chart") as ChartItem, {
     type: "bar",
     data: {
       labels: bpkData.map((row: any) => row["date_y-m"]),
@@ -246,7 +249,7 @@ import { getBpkData, primaryColor } from "./app";
   });
 
   // Force lock Y-Scale
-  var chartMax = Math.max(chart1.scales.y.max, chart2.scales.y.max);
+  let chartMax = Math.max(chart1.scales.y!.max, chart2.scales.y!.max);
   chart1.options.scales!.y!.max = chartMax;
   chart2.options.scales!.y!.max = chartMax;
   chart1.update();

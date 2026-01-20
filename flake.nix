@@ -22,7 +22,9 @@
               # Infrastructure
               mkhl.direnv
               jnoortheen.nix-ide
+              yzhang.markdown-all-in-one
               # Developing
+              oven.bun-vscode
               ms-python.python
               ms-toolsai.jupyter
               # Linting/Formatting
@@ -52,8 +54,7 @@
               # Visualizing
               python-pkgs.matplotlib
             ]))
-            pnpm
-            nodejs_24
+            bun
           ];
         };
       }

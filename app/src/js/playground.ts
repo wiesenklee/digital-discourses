@@ -1,11 +1,11 @@
-import Chart, { ChartItem } from 'chart.js/auto'
-
-import { getBpkData } from './app';
+import 'chartjs-adapter-date-fns'
+import Chart, { type ChartItem } from 'chart.js/auto'
+import bpk from '../bpk.json';
 
 (async function () {
-  const bpkData = await getBpkData();
+  const bpkData = (bpk as { data: Array<object> })["data"];
 
-  var chart1 = new Chart(
+  let chart1 = new Chart(
     document.getElementById('playground-chart') as ChartItem,
     {
       type: 'bar',
@@ -34,14 +34,14 @@ import { getBpkData } from './app';
     }
   );
 
-  var checkKeywordButton = document.getElementById("check-keyword-button");
-  var addKeywordButton = document.getElementById("add-keyword-button");
-  var deleteKeywordButton = document.getElementById("delete-keyword-button");
-  var keywordInput = document.getElementById("add-keyword-input") as HTMLInputElement;
+  let checkKeywordButton = document.getElementById("check-keyword-button");
+  let addKeywordButton = document.getElementById("add-keyword-button");
+  let deleteKeywordButton = document.getElementById("delete-keyword-button");
+  let keywordInput = document.getElementById("add-keyword-input") as HTMLInputElement;
 
   addKeywordButton?.addEventListener("click", (_) => {
-    var keyword = keywordInput.value;
-    var countData: Array<Number> = [];
+    let keyword = keywordInput.value;
+    let countData: Array<Number> = [];
     if (keyword.length < 3) return;
     bpkData.forEach((d: any) => {
       countData.push(d.transcript.matchAll(new RegExp(keyword, "gi")).toArray().length)
@@ -50,8 +50,8 @@ import { getBpkData } from './app';
     chart1.update();
   });
   checkKeywordButton?.addEventListener("click", (_) => {
-    var keyword = keywordInput.value;
-    var countData: Array<Number> = [];
+    let keyword = keywordInput.value;
+    let countData: Array<Number> = [];
     if (keyword.length < 3) return;
     bpkData.forEach((d: any) => {
       countData.push(d.transcript.matchAll(new RegExp(keyword, "gi")).toArray().length)
@@ -64,18 +64,18 @@ import { getBpkData } from './app';
     chart1.update();
   });
 
-  var autoZoom = document.getElementById("p-auto-zoom") as HTMLInputElement;
+  let autoZoom = document.getElementById("p-auto-zoom") as HTMLInputElement;
   autoZoom?.addEventListener("change", (e) => {
     if ((e.target as HTMLInputElement).checked) {
       chart1.options.scales!.y!.max = undefined;
     } else {
-      chart1.options.scales!.y!.max = chart1.scales.y.max;
+      chart1.options.scales!.y!.max = chart1.scales.y!.max;
     }
     chart1.update();
   });
 
   let suggestionsDiv = document.getElementById("p-suggestions")
-  var newSuggestionsButton = document.getElementById('new-suggestions') as HTMLButtonElement;
+  let newSuggestionsButton = document.getElementById('new-suggestions') as HTMLButtonElement;
   newSuggestionsButton.addEventListener('click', () => {
     addSuggestions(generateRandomSug());
   });

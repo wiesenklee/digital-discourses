@@ -5,12 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Discourses</title>
-  <link rel="stylesheet" href="style.css">
+  <script type="module" src="./js/app.ts"></script>
+  <script type="module" src="./js/playground.ts"></script>
+  <script type="module" src="./js/discourse.ts"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../node_modules/@picocss/pico/css/pico.min.css">
 </head>
 
 <body>
   <main class="container" style="padding: 0">
-    <section id="section-0" style="display: flex; flex-direction: column; padding-top: 0;">
+    <section id="section-0" style="padding-top: 0;">
       <div style="flex: 1; rotate: 180deg;">
         <canvas id="landing-chart"></canvas>
       </div>
@@ -37,50 +41,44 @@
           Ereignisse angezeigt.
         <p>
       </div>
-      <article style="height: 80%; display: flex; flex-direction: column;">
-        <div class="grid">
-          <select name="e1-select">
-            <option>Migration</option>
-          </select>
-          <select name="e2-select">
-            <option>Klimawandel</option>
-          </select>
+      <article>
+        <div class="container" style="height: 50%;"><canvas id="e1-chart"></canvas>
         </div>
-        <div style="flex: 1">
-          <div class="container" style="height: 50%;"><canvas id="e1-chart"></canvas>
-          </div>
-          <div class="container" style="height: 50%;"><canvas id="e2-chart"></canvas>
-          </div>
+        <div class="container" style="height: 50%;"><canvas id="e2-chart"></canvas>
         </div>
-        <footer style="display: flex; justify-content: center;">
-          <button id="button-nav-2">Selber Testen<span style="padding-left: 16px;">↓</span></button>
-        </footer>
       </article>
+      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
+        <button id="button-nav-2">Selber Testen<span style="padding-left: 16px;">↓</span></button>
+      </div>
     </section>
 
     <section id="section-2">
-      <h2>Playground</h2>
-      <p>Hier kannst du kreativ werden und selber Schlagwörter eingeben. Zur Anregung gibt es auch zufällige Vorschläge.
-      </p>
-      <article style="height: 80%; display: flex; flex-direction: column;">
-        <form action="javascript:void(0);" style="display: flex; flex-direction: row;; ">
-          <fieldset role="group" style="margin-right: 8px;">
-            <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
-            <input id="check-keyword-button" type="submit" value="Testen" />
-          </fieldset>
-          <fieldset role="group" style="flex: 1;">
-            <input id="add-keyword-button" class="secondary" type="submit" value="Speichern" />
-            <input id="delete-keyword-button" class="secondary" type="submit" value="Zurücksetzten" />
-          </fieldset>
-        </form>
+      <div>
+        <h2>Ausprobieren</h2>
+        <p>Hier kannst Du kreativ werden und selber Schlagwörter eingeben und vergleichen. Durch's <b>Speichern</b>
+          kannst Du Daten zu einem Schlagwort festhalten und mit anderen Vergleichen. Zur
+          Anregung gibt es auch zufällige <b>Vorschläge</b>. Daten lassen sich durch
+          Anklicken auf der Legende <b>ausblenden</b>.
+        </p>
+      </div>
+      <article style="display: flex; flex-direction: column;">
         <div style="display: flex; align-items: center;">
           <div id="p-suggestions"></div>
           <span id="new-suggestions" class="chip"
             style="margin: 0 16 8 0; background-color: #8b8a8aff; color: white;">Mehr
             Vorschläge</span>
         </div>
-        <hr />
-        <div class="container" style="height: 100%"><canvas id="playground-chart"></canvas></div>
+        <form action="javascript:void(0);" style="display: flex; flex-direction: row;; ">
+          <fieldset role="group" style="margin-right: 8px;">
+            <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
+            <input id="check-keyword-button" type="submit" value="Testen" />
+          </fieldset>
+          <fieldset role="group" style="flex: 1;">
+            <input id="add-keyword-button" type="submit" value="Speichern" />
+            <input id="delete-keyword-button" class="outline" type="submit" value="Zurücksetzten" />
+          </fieldset>
+        </form>
+        <div class="container" style="flex: 1"><canvas id="playground-chart"></canvas></div>
         <footer>
           <input type="checkbox" role="switch" id="p-auto-zoom" enabled>Auto Zoom</button>
         </footer>
@@ -88,9 +86,6 @@
     </section>
   </main>
 
-  <script type="module" src="app.ts"></script>
-  <script type="module" src="discourse.ts"></script>
-  <script type="module" src="playground.ts"></script>
 </body>
 
 <dialog id="dialog-introduction">

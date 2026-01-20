@@ -1,21 +1,18 @@
 {
-  "name": "open-keyword-discourses",
+  "name": "app",
+  "module": "index.ts",
+  "type": "module",
   "private": true,
-  "version": "0.0.0",
-  "source": "src/index.html",
-  "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
   },
   "dependencies": {
-    "@parcel/config-default": "^2.16.1",
-    "@parcel/transformer-raw": "^2.16.1",
     "@picocss/pico": "^2.1.1",
     "chart.js": "^4.5.1",
     "chartjs-adapter-date-fns": "^3.0.0",
     "date-fns": "^4.1.0"
-  },
-  "devDependencies": {
-    "parcel": "^2.14.0"
   }
 }

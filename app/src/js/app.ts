@@ -1,25 +1,10 @@
-import Chart, { ChartItem } from "chart.js/auto";
-
-import 'chartjs-adapter-date-fns'
-import bpk from 'url:./bpk.json'
-
-let bpkData: Array<object> | undefined = undefined;
-
-export async function getBpkData() {
-  while (bpkData === undefined) {
-    await new Promise((r) => setTimeout(r, 200));
-  }
-  return bpkData;
-}
-
-export let primaryColor: string = window.getComputedStyle(document.body).getPropertyValue('--pico-primary');
+import Chart, { type ChartItem } from "chart.js/auto";
+import bpk from '../bpk.json'
 
 (async function () {
-  const response = await fetch(bpk);
-  const json = await response.json();
-  bpkData = json.data;
+  const bpkData = (bpk as { data: Array<object> })["data"];
 
-  let html = document.getElementsByTagName("html")[0];
+  let html = document.getElementsByTagName("html")[0]!;
 
   let buttonIntroduction = document.getElementById("button-introduction");
   let buttonCloseIntroduction = document.getElementById("button-close-introduction");
@@ -41,6 +26,7 @@ export let primaryColor: string = window.getComputedStyle(document.body).getProp
     html.classList.toggle("modal-is-open");
   })
 
+
   let buttonNav1 = document.getElementById("button-nav-1");
   buttonNav1?.addEventListener("click", (_) => {
     document.getElementById("section-1")?.scrollIntoView({ behavior: 'smooth' });
@@ -52,16 +38,16 @@ export let primaryColor: string = window.getComputedStyle(document.body).getProp
   });
 
 
-  var chart1 = new Chart(
+  let chart1 = new Chart(
     document.getElementById('landing-chart') as ChartItem,
     {
       type: 'bar',
       data: {
-        labels: bpkData!.map((row: any) => row['date_y-m']),
+        labels: bpkData.map((row: any) => row['date_y-m']),
         datasets: [
           {
             label: 'Total Words',
-            data: bpkData!.map((row: any) => row['transcript_words']),
+            data: bpkData.map((row: any) => row['transcript_words']),
           }
         ]
       },
