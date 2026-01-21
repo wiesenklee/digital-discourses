@@ -140,8 +140,7 @@ import bpk from '../bpk.json'
     }
   }
 
-  type ScaleOptions = ChartOptions["scales"];
-  const scaleOptions: ScaleOptions = {
+  const scaleOptions: ChartOptions["scales"] = {
     x: {
       ticks: {
         major: {
@@ -184,7 +183,7 @@ import bpk from '../bpk.json'
             label: k,
             data: bpkData.map(
               (row: any) =>
-                row.transcript.matchAll(new RegExp(k, "gi")).toArray().length,
+                Array.from(row.transcript.matchAll(new RegExp(k, "gi"))).length,
             ),
             backgroundColor: e1Colors[i],
           };
@@ -221,7 +220,7 @@ import bpk from '../bpk.json'
             label: k,
             data: bpkData.map(
               (row: any) =>
-                row.transcript.matchAll(new RegExp(k, "gi")).toArray().length,
+                Array.from(row.transcript.matchAll(new RegExp(k, "gi"))).length,
             ),
             backgroundColor: e2Colors[i],
           };

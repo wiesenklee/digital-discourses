@@ -44,7 +44,7 @@ import bpk from '../bpk.json';
     let countData: Array<Number> = [];
     if (keyword.length < 3) return;
     bpkData.forEach((d: any) => {
-      countData.push(d.transcript.matchAll(new RegExp(keyword, "gi")).toArray().length)
+      countData.push(Array.from(d.transcript.matchAll(new RegExp(keyword, "gi"))).length)
     });
     chart1.data.datasets.push({ label: `${keyword}`, data: countData });
     chart1.update();
@@ -54,7 +54,7 @@ import bpk from '../bpk.json';
     let countData: Array<Number> = [];
     if (keyword.length < 3) return;
     bpkData.forEach((d: any) => {
-      countData.push(d.transcript.matchAll(new RegExp(keyword, "gi")).toArray().length)
+      countData.push(Array.from(d.transcript.matchAll(new RegExp(keyword, "gi"))).length)
     });
     chart1.data.datasets.splice(0, 1, ({ label: `${keyword}`, data: countData }));
     chart1.update();
