@@ -1,6 +1,6 @@
 import 'chartjs-adapter-date-fns'
 import Chart, { type ChartItem } from 'chart.js/auto'
-import bpk from '../bpk.json';
+import bpk from '../bpk.json' with { type: 'json' }
 
 (async function () {
   const bpkData = (bpk as { data: Array<object> })["data"];

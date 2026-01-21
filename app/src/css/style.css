@@ -8,13 +8,17 @@ html {
 section {
     scroll-snap-align: start;
     height: 100vh;
-    padding-top: 16;
+    padding-top: 32px;
     display: flex;
     flex-direction: column;
 }
 
 article {
     flex: 1;
+}
+
+p {
+    max-width: 60rem;
 }
 
 .chip {

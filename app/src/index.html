@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Discourses</title>
+  <title>Digitale Diskurse</title>
   <script type="module" src="./js/app.ts"></script>
   <script type="module" src="./js/playground.ts"></script>
   <script type="module" src="./js/discourse.ts"></script>
@@ -13,46 +13,103 @@
 </head>
 
 <body>
-  <main class="container" style="padding: 0">
-    <section id="section-0" style="padding-top: 0;">
+  <main style="padding: 0">
+    <section style="padding-top: 0;">
       <div style="flex: 1; rotate: 180deg;">
         <canvas id="landing-chart"></canvas>
       </div>
-      <div>
+      <div class="container">
         <hgroup>
           <h1>Digitale Diskurse</h1>
           <p>Diskursanalyse anhand von Schlagwörtern</p>
         </hgroup>
-        <p style="width: 40rem;">Ob Rechtsruck, Klimafragen oder Geschlechtergerechtigkeit - Trends bestimmen
+        <p>Ob Rechtsruck, Klimafragen oder Geschlechtergerechtigkeit - Trends bestimmen
           Gesellschaft und Politik.
           Wir haben an öffentlichen Daten untersucht, wie sich Themen und Diskurse in den letzten 5 Jahren
           entwickelt haben.</p>
-        <button id="button-nav-1">Reinschauen<span style="padding-left: 16px;">↓</span></button>
+        <button id="button-nav-0"><span style="padding-right: 16px;">↓</span>Reinschauen</button>
+
       </div>
       <hr />
     </section>
 
-    <section id="section-1">
+    <section id="section-0" class="container">
       <div>
-        <h2>Vorbereitete Diskurse</h2>
-        <p>Durch das zusammenschließen von mehreren Schlagwörtern versuchen wir bestimmte Diskurse
-          besser erkennen zu
-          können. Hier kannst Du aus mehreren Themen zwei direkt vergleichen. Zur Einordnung werden außerdem wichtige
-          Ereignisse angezeigt.
+        <h2>Das Konzept</h2>
         <p>
+          Anhand von spezifischen Schlagwörtern und wie häufig sie in der Öffentlichkeit genutzt werden lassen
+          sich Thema- und Diskursverschiebungen ablesen. Wir gehen also davon aus, dass je häufiger ein Wort genutzt
+          wird, desto höher ist seine Relevanz.
+        </p>
+        <br />
       </div>
-      <article>
-        <div class="container" style="height: 50%;"><canvas id="e1-chart"></canvas>
-        </div>
-        <div class="container" style="height: 50%;"><canvas id="e2-chart"></canvas>
-        </div>
-      </article>
-      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
-        <button id="button-nav-2">Selber Testen<span style="padding-left: 16px;">↓</span></button>
+      <div style="flex: 1; display: flex;"">
+        <article style=" margin-right: 16px;">
+        <header style="text-align: center;">
+          <h3>1) Kontext</h3>
+        </header>
+        <p>
+          Aus der großen Masse an öffentlich verfügbaren Daten haben wir uns der
+          <b>Bundespressekonferenz</b> gewidmet:
+          <br /><br />
+          Drei mal in der Woche finden sich Pressesprecher:innen der Regierung und Ministerien dort zusammen, um sich
+          den Fragen der Journalist:innen zu stellen.
+          <br /><br />
+          Dadurch wird der mediale und politische Diskurs in einem sehr regelmäßigem Abstand dokumentiert.
+        </p>
+        </article>
+        <article style=" margin-right: 16px;">
+          <header style="text-align: center;">
+            <h3>2) Daten </h3>
+          </header>
+          <p>
+            Die Bundespressekonferenz verfügt leider über kein öffentliches Archiv. Jedoch wird auf Youtube eine
+            Playlist seid 2015 mit den entsprechenden Videoaufnahmen gefüllt.
+            <br /><br />
+            Wir haben uns das zunutze gemacht und die
+            automatisch generierten Transkripte heruntergeladen.
+            Seid Januar 2020 ergibt das <b>878 verfügbare Transkripte</b>.
+          </p>
+        </article>
+        <article>
+          <header style="text-align: center;">
+            <h3>3) Verarbeitung</h3>
+          </header>
+          <p>
+            Die Transkripte wurden zusammen mit dem Datum und der Anzahl der Wörter gespeichert. Für jeden Monaten haben
+            wir die Texte zusammengefügt und geschaut, wie viele Daten wir je Monat haben.
+            <br /> <br />
+
+          </p>
+        </article>
+      </div>
+      <div style=" display: flex; justify-content: center; padding-bottom: 16px;">
+        <button id="button-nav-1"><span style="padding-right: 16px;">↓</span>Zur Darstellung</button>
       </div>
     </section>
 
-    <section id="section-2">
+    <section id="section-1">
+      <div class="container">
+        <h2>Diskurse im Vergleich</h2>
+        <p>
+          Für die zwei prominenten Themen <b>Migration</b> und <b>Klimawandel</b> lohnt sich ein direkter Vergleich.
+          Zur besseren Abbildung der Diskurse werden mehrere Schlagwörtern zusammen betrachtet. Die einzelnen
+          Häufigkeiten werden zusammen addiert. Zur Einordnung werden einige wichtige zeitliche
+          Ereignisse eingeblendet.
+        <p>
+      </div>
+      <article style="padding: 16px 64px 16px 64px;">
+        <div style="height: 50%;"><canvas id="e1-chart"></canvas>
+        </div>
+        <div style="height: 50%;"><canvas id="e2-chart"></canvas>
+        </div>
+      </article>
+      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
+        <button id="button-nav-2"><span style="padding-right: 16px;">↓</span>Selber Testen</button>
+      </div>
+    </section>
+
+    <section id="section-2" class="container">
       <div>
         <h2>Ausprobieren</h2>
         <p>Hier kannst Du kreativ werden und selber Schlagwörter eingeben und vergleichen. Durch's <b>Speichern</b>
@@ -62,11 +119,11 @@
         </p>
       </div>
       <article style="display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center;">
-          <div id="p-suggestions"></div>
-          <span id="new-suggestions" class="chip"
-            style="margin: 0 16 8 0; background-color: #8b8a8aff; color: white;">Mehr
+        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+          <span id="new-suggestions" class="chip" style="background-color: #8b8a8aff; color: white;">⟳ Neue
             Vorschläge</span>
+          <div id="p-suggestions"></div>
+
         </div>
         <form action="javascript:void(0);" style="display: flex; flex-direction: row;; ">
           <fieldset role="group" style="margin-right: 8px;">
@@ -78,29 +135,13 @@
             <input id="delete-keyword-button" class="outline" type="submit" value="Zurücksetzten" />
           </fieldset>
         </form>
-        <div class="container" style="flex: 1"><canvas id="playground-chart"></canvas></div>
+        <div style="flex: 1"><canvas id="playground-chart"></canvas></div>
         <footer>
           <input type="checkbox" role="switch" id="p-auto-zoom" enabled>Auto Zoom</button>
         </footer>
       </article>
     </section>
   </main>
-
 </body>
-
-<dialog id="dialog-introduction">
-  <article>
-    <header>
-      <button id="button-close-introduction" aria-label="Close" rel="prev"></button>
-      <p>
-        <strong>💡 Introduction</strong>
-      </p>
-    </header>
-    <img style="height: 400" />
-    <div>
-      There will be multiple slides with images explaining all parts of this little application.
-    </div>
-  </article>
-</dialog>
 
 </html>

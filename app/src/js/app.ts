@@ -1,30 +1,13 @@
 import Chart, { type ChartItem } from "chart.js/auto";
-import bpk from '../bpk.json'
+import bpk from '../bpk.json' with { type: 'json' }
 
 (async function () {
   const bpkData = (bpk as { data: Array<object> })["data"];
 
-  let html = document.getElementsByTagName("html")[0]!;
-
-  let buttonIntroduction = document.getElementById("button-introduction");
-  let buttonCloseIntroduction = document.getElementById("button-close-introduction");
-  let dialogIntroduction = document.getElementById("dialog-introduction");
-
-  buttonIntroduction?.addEventListener("click", (_) => {
-    dialogIntroduction?.toggleAttribute("open");
-    html.classList.toggle("modal-is-open");
+  let buttonNav0 = document.getElementById("button-nav-0");
+  buttonNav0?.addEventListener("click", (_) => {
+    document.getElementById("section-0")?.scrollIntoView({ behavior: 'smooth' });
   });
-
-  buttonCloseIntroduction?.addEventListener("click", (_) => {
-    dialogIntroduction?.toggleAttribute("open");
-    html.classList.toggle("modal-is-open");
-  });
-
-  dialogIntroduction?.addEventListener("click", (e) => {
-    if (e.target !== e.currentTarget) return;
-    dialogIntroduction?.toggleAttribute("open");
-    html.classList.toggle("modal-is-open");
-  })
 
 
   let buttonNav1 = document.getElementById("button-nav-1");
@@ -37,8 +20,7 @@ import bpk from '../bpk.json'
     document.getElementById("section-2")?.scrollIntoView({ behavior: 'smooth' });
   });
 
-
-  let chart1 = new Chart(
+  new Chart(
     document.getElementById('landing-chart') as ChartItem,
     {
       type: 'bar',
