@@ -1,6 +1,7 @@
+import Chart, { type ChartItem, type ScaleChartOptions } from 'chart.js/auto'
 import 'chartjs-adapter-date-fns'
-import Chart, { type ChartItem } from 'chart.js/auto'
 import bpk from '../bpk.json' with { type: 'json' }
+import { scaleOptions, barColors } from './app';
 
 (async function () {
   const bpkData = (bpk as { data: Array<object> })["data"];
@@ -16,56 +17,29 @@ import bpk from '../bpk.json' with { type: 'json' }
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        scales: {
-          x: {
-            type: 'time',
-            time: {
-              tooltipFormat: "MMMM yyyy",
-            },
-          }
-
-        },
-        plugins: {
-          colors: {
-            forceOverride: true
-          },
-        },
+        scales: (scaleOptions as ScaleChartOptions),
       }
     }
   );
 
-  let checkKeywordButton = document.getElementById("check-keyword-button");
-  let addKeywordButton = document.getElementById("add-keyword-button");
-  let deleteKeywordButton = document.getElementById("delete-keyword-button");
   let keywordInput = document.getElementById("add-keyword-input") as HTMLInputElement;
-
-  addKeywordButton?.addEventListener("click", (_) => {
+  document.getElementById("add-keyword-button")?.addEventListener("click", (_) => {
     let keyword = keywordInput.value;
-    let countData: Array<Number> = [];
+    let countData: Array<number> = [];
     if (keyword.length < 3) return;
     bpkData.forEach((d: any) => {
-      countData.push(Array.from(d.transcript.matchAll(new RegExp(keyword, "gi"))).length)
+      let k = wholeWord ? " " + keyword + " " : keyword;
+      countData.push(Array.from(d.transcript.matchAll(new RegExp(k, "gi"))).length)
     });
-    chart1.data.datasets.push({ label: `${keyword}`, data: countData });
+    chart1.data.datasets.push({ label: `${keyword}`, data: countData, backgroundColor: barColors[chart1.data.datasets.length % barColors.length] });
     chart1.update();
   });
-  checkKeywordButton?.addEventListener("click", (_) => {
-    let keyword = keywordInput.value;
-    let countData: Array<Number> = [];
-    if (keyword.length < 3) return;
-    bpkData.forEach((d: any) => {
-      countData.push(Array.from(d.transcript.matchAll(new RegExp(keyword, "gi"))).length)
-    });
-    chart1.data.datasets.splice(0, 1, ({ label: `${keyword}`, data: countData }));
-    chart1.update();
-  });
-  deleteKeywordButton?.addEventListener("click", (_) => {
-    chart1.data.datasets = [];
+  document.getElementById("delete-keyword-button")?.addEventListener("click", (_) => {
+    chart1.data.datasets.pop();
     chart1.update();
   });
 
-  let autoZoom = document.getElementById("p-auto-zoom") as HTMLInputElement;
-  autoZoom?.addEventListener("change", (e) => {
+  document.getElementById("switch-auto-zoom")?.addEventListener("change", (e) => {
     if ((e.target as HTMLInputElement).checked) {
       chart1.options.scales!.y!.max = undefined;
     } else {
@@ -74,7 +48,20 @@ import bpk from '../bpk.json' with { type: 'json' }
     chart1.update();
   });
 
-  let suggestionsDiv = document.getElementById("p-suggestions")
+  let wholeWord = false;
+  document.getElementById("switch-whole-word")?.addEventListener("change", (e) => {
+    wholeWord = (e.target as HTMLInputElement).checked;
+  });
+
+  chart1.options.scales!.y!.stacked = false;
+  chart1.options.scales!.x!.stacked = false;
+  document.getElementById("switch-stacked")?.addEventListener("change", (e) => {
+    chart1.options.scales!.y!.stacked = (e.target as HTMLInputElement).checked;
+    chart1.options.scales!.x!.stacked = (e.target as HTMLInputElement).checked;
+    chart1.update();
+  });
+
+  let suggestionsDiv = document.getElementById("suggestions")
   let newSuggestionsButton = document.getElementById('new-suggestions') as HTMLButtonElement;
   newSuggestionsButton.addEventListener('click', () => {
     addSuggestions(generateRandomSug());
@@ -110,5 +97,4 @@ import bpk from '../bpk.json' with { type: 'json' }
       suggestionsDiv!.appendChild(span);
     }
   }
-
 })();

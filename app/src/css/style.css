@@ -7,10 +7,11 @@ html {
 
 section {
     scroll-snap-align: start;
-    height: 100vh;
-    padding-top: 32px;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 article {
@@ -18,14 +19,24 @@ article {
 }
 
 p {
-    max-width: 60rem;
+    max-width: 50rem;
 }
 
 .chip {
-    background-color: #e7e7e7;
-    border-radius: .25rem;
+    display: inline-block;
     padding: 1px 8px 1px 8px;
     margin: 0px 6px 6px 0px;
+    background-color: var(--pico-code-background-color);
+    border-radius: .25rem;
     cursor: pointer;
-    display: inline-block;
+}
+
+.canvas {
+    padding: 16px 64px 16px 64px;
+}
+
+@media (max-width: 576px) {
+    .canvas {
+        padding: 4px;
+    }
 }

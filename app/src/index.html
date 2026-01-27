@@ -27,64 +27,70 @@
           Gesellschaft und Politik.
           Wir haben an öffentlichen Daten untersucht, wie sich Themen und Diskurse in den letzten 5 Jahren
           entwickelt haben.</p>
-        <button id="button-nav-0"><span style="padding-right: 16px;">↓</span>Reinschauen</button>
-
+        <button id="button-nav-0"><span style="padding-right: 1rem;">↓</span>Reinschauen</button>
       </div>
-      <hr />
     </section>
 
     <section id="section-0" class="container">
       <div>
         <h2>Das Konzept</h2>
         <p>
-          Anhand von spezifischen Schlagwörtern und wie häufig sie in der Öffentlichkeit genutzt werden lassen
-          sich Thema- und Diskursverschiebungen ablesen. Wir gehen also davon aus, dass je häufiger ein Wort genutzt
-          wird, desto höher ist seine Relevanz.
+          Anhand von spezifischen Schlagwörtern und wie häufig sie in den Öffentlichen Medien genutzt werden lassen
+          sich Thema- und Diskursverschiebungen ablesen. <br /> Also: <i>Je häufiger ein Wort genutzt wird, desto
+            relevanter
+            scheint es zu sein.</i>
         </p>
         <br />
       </div>
-      <div style="flex: 1; display: flex;"">
-        <article style=" margin-right: 16px;">
-        <header style="text-align: center;">
-          <h3>1) Kontext</h3>
-        </header>
-        <p>
-          Aus der großen Masse an öffentlich verfügbaren Daten haben wir uns der
-          <b>Bundespressekonferenz</b> gewidmet:
-          <br /><br />
-          Drei mal in der Woche finden sich Pressesprecher:innen der Regierung und Ministerien dort zusammen, um sich
-          den Fragen der Journalist:innen zu stellen.
-          <br /><br />
-          Dadurch wird der mediale und politische Diskurs in einem sehr regelmäßigem Abstand dokumentiert.
-        </p>
-        </article>
-        <article style=" margin-right: 16px;">
+      <div style="flex: 1; display: flex; margin-left: -1rem; margin-right: -1rem;">
+        <article style="margin-right: 1rem;">
           <header style="text-align: center;">
-            <h3>2) Daten </h3>
+            <h3>1. Kontext</h3>
           </header>
           <p>
-            Die Bundespressekonferenz verfügt leider über kein öffentliches Archiv. Jedoch wird auf Youtube eine
-            Playlist seid 2015 mit den entsprechenden Videoaufnahmen gefüllt.
+            Aus der großen Masse an Daten, die die öffentlichen Medien produzieren,
+            liegt hier der Fokus auf der <b>Regierungspressekonferenz</b>:
             <br /><br />
-            Wir haben uns das zunutze gemacht und die
-            automatisch generierten Transkripte heruntergeladen.
-            Seid Januar 2020 ergibt das <b>878 verfügbare Transkripte</b>.
+            Drei mal in der Woche läd ein Verein Pressesprecher:innen der Regierung und
+            Ministerien ein, wo sie sich dann den Fragen der Journalist:innen stellen "müssen".
+            <br /><br />
+            So wird der mediale und politische Diskurs in einem sehr <b>regelmäßigem</b> Abstand dokumentiert.
+          </p>
+        </article>
+        <article style="margin-right: 1rem;">
+          <header style="text-align: center;">
+            <h3>2. Daten </h3>
+          </header>
+          <p>
+            Es gibt zur Regierungspressekonferenz leider keine gut geführten <b>offiziellen</b> Archive.
+            Jedoch wird auf Youtube eine Playlist seit 2015 mit den entsprechenden Videoaufnahmen der Konferenzen
+            gefüllt.
+            <br /><br />
+            Die Transkripte werden auf Youtube automatisch generiert. Das ist nicht immer so genau.<br />
+            Von Januar 2020 bis November 2025 sind das insgesamt <b>878 verfügbare Transkripte</b>. Auffällig ist der
+            November 2020. In dem Zeitraum sind leider viele Transkripte auf Youtube nicht verfügbar.
           </p>
         </article>
         <article>
           <header style="text-align: center;">
-            <h3>3) Verarbeitung</h3>
+            <h3>3. Verarbeitung </h3>
           </header>
           <p>
-            Die Transkripte wurden zusammen mit dem Datum und der Anzahl der Wörter gespeichert. Für jeden Monaten haben
-            wir die Texte zusammengefügt und geschaut, wie viele Daten wir je Monat haben.
+            Für dieses Projekt sind die einzelnen Transkripte in jedem Monat zu einem großen Transkript zusammengefügt
+            worden. <br />Die Anzahl an Wörtern pro Monat liegen meist zwischen <span>60 000</span> und <span>120
+              000</span>.
+            <b>Im November 2020</b> jedoch nur bei ca. 8 000, weshalb dafür <b>die Ergebnisse nicht vergleichbar</b>
+            sind.
             <br /> <br />
-
+            Die Schlagwortsuche ignoriert Groß- und Kleinschreibung und zählt auch Teilwörter. In
+            manchen Fällen muss daher kontrolliert werden, dass das Ergebnis <b>nicht durch irrelevante Wörter
+              verfälscht
+              wird.</b>
           </p>
         </article>
       </div>
-      <div style=" display: flex; justify-content: center; padding-bottom: 16px;">
-        <button id="button-nav-1"><span style="padding-right: 16px;">↓</span>Zur Darstellung</button>
+      <div>
+        <button id="button-nav-1"><span style="padding-right: 1rem;">↓</span>Zur Darstellung</button>
       </div>
     </section>
 
@@ -98,48 +104,55 @@
           Ereignisse eingeblendet.
         <p>
       </div>
-      <article style="padding: 16px 64px 16px 64px;">
-        <div style="height: 50%;"><canvas id="e1-chart"></canvas>
+      <article class="canvas">
+        <div style="height: 50%;"><canvas id="migration-chart"></canvas>
         </div>
-        <div style="height: 50%;"><canvas id="e2-chart"></canvas>
+        <div style="height: 50%;"><canvas id="climate-chart"></canvas>
         </div>
       </article>
-      <div style="display: flex; justify-content: center; padding-bottom: 16px;">
-        <button id="button-nav-2"><span style="padding-right: 16px;">↓</span>Selber Testen</button>
+      <div class="container">
+        <button id="button-nav-2"><span style="padding-right: 16px;">↓</span>Selbst Testen</button>
       </div>
     </section>
 
-    <section id="section-2" class="container">
-      <div>
+    <section id="section-2">
+      <div class="container">
         <h2>Ausprobieren</h2>
-        <p>Hier kannst Du kreativ werden und selber Schlagwörter eingeben und vergleichen. Durch's <b>Speichern</b>
-          kannst Du Daten zu einem Schlagwort festhalten und mit anderen Vergleichen. Zur
+        <p>Hier können eigene, kreative Schlagwörter getestet werden - das geht ganz leicht: Durch's <b>Hinzufügen</b>
+          können Daten zu einem Schlagwort festhalten und mit anderen Vergleichen. Zur
           Anregung gibt es auch zufällige <b>Vorschläge</b>. Daten lassen sich durch
           Anklicken auf der Legende <b>ausblenden</b>.
         </p>
-      </div>
-      <article style="display: flex; flex-direction: column;">
         <div style="display: flex; align-items: center; margin-bottom: 16px;">
           <span id="new-suggestions" class="chip" style="background-color: #8b8a8aff; color: white;">⟳ Neue
             Vorschläge</span>
-          <div id="p-suggestions"></div>
-
+          <div id="suggestions"></div>
         </div>
-        <form action="javascript:void(0);" style="display: flex; flex-direction: row;; ">
-          <fieldset role="group" style="margin-right: 8px;">
-            <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
-            <input id="check-keyword-button" type="submit" value="Testen" />
-          </fieldset>
-          <fieldset role="group" style="flex: 1;">
-            <input id="add-keyword-button" type="submit" value="Speichern" />
-            <input id="delete-keyword-button" class="outline" type="submit" value="Zurücksetzten" />
-          </fieldset>
+        <form action="javascript:void(0);" style="display: flex;">
+          <input id="add-keyword-input" type="text" placeholder="Keyword" minlength="3" required />
+          <input style="margin-left: 1rem; flex: 1;" id="add-keyword-button" type="submit" value="Hinzufügen" />
+          <input style="margin-left: 1rem; flex: 1;" id="delete-keyword-button" class="outline" type="submit"
+            value="Entfernen" />
         </form>
+      </div>
+      <article class="canvas" style="display: flex;">
         <div style="flex: 1"><canvas id="playground-chart"></canvas></div>
-        <footer>
-          <input type="checkbox" role="switch" id="p-auto-zoom" enabled>Auto Zoom</button>
-        </footer>
       </article>
+      <div class="container" style="display: flex; align-items: baseline;">
+        <p><b>Optionen:</b></p>
+        <label style="margin-left: 1rem;">
+          <input type="checkbox" role="switch" id="switch-whole-word" />
+          <span data-tooltip="Sucht nicht nach Teilwörtern">Nur ganzes Wort</span>
+        </label>
+        <label style="margin-left: 1rem;">
+          <input type="checkbox" role="switch" id="switch-stacked" />
+          <span data-tooltip="Häufigkeiten werden addiert">Gestapelt</span>
+        </label>
+        <label style="margin-left: 1rem;">
+          <input type="checkbox" role="switch" id="switch-auto-zoom" checked />
+          <span data-tooltip="Wertebereich passt sich automatisch an">Auto Zoom</span>
+        </label>
+      </div>
     </section>
   </main>
 </body>
