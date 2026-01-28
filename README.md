@@ -1,42 +1,26 @@
-# Digitale Discourses
+# Digitale Discourses - Digitale Diskurse
+Diskursanalyse anhand von Schlagwörtern
 
-## Datensätze
-### Bundespressekonferenz
-3x die Woche, daher ca. 630 (5\*42\*3) innerhalb der letzten fünf Jahre.
+## Abstrakt
+Anhand von spezifischen Schlagwörtern und deren Häufigkeit in den öffentlichen Medien soll eine Thema- und Diskurs Verschiebung dargestellt werden. Als Quelle werden inoffizielle automatisierte Transkripte der Bundespressekonferenz verwendet, die bis zum Jahr 2015 zurückreichen.
 
-Links
-- https://de.wikipedia.org/wiki/Bundespressekonferenz
+## Setup
+Verwende die nix devShell.
+### Daten
+Führe die `Fetch Data` Zellen vom [Jupyter Notebook](./notebook/main.ipynb) aus.
+### Nutzeroberfläche
+```
+cd app/
+bun src/index.html 
+```
+
+## Daten
 - https://www.youtube.com/playlist?list=PLuQE_zb4awhV8JxSNeJzUnHskCx0eyjVj
 
-#### Veröffentlichung Bundesregierung
-Links:
-- https://www.govdata.de/suche/daten/bundesregierung--pressemitteilungen
-- https://www.govdata.de/suche/daten/bundesregierung--reden
-
-#### Veröffentlichungen Partei
-Bestimmte Personen z.B (Alice Weidel), Markus Söder, Olaf Scholz, Robert Habeck
-
-### Struktur
-- Wort
-- Zeit
-- Häufigkeit
-- Positiv/Negativ
-- Cluster Zugehörigkeit
-
-## Diskurs Darstellung
-- Clustering (Schlagwörter zusammenfassen)
-- verschiedene Quellen/Datensätze
-- Synonyme 
-
-## Gestalterische Darstellung
-- Gestaltung ist noch zu wenig
-- Aufwendige Kursdokumentation
-- Events einbinden 
-- Grafiken für "aufkochen" und "abflammen" eines Diskurses
-- Cluster von Wörtern darstellen
-
-## Resources
-- http://well-formed.eigenfactor.org/
-- https://github.com/vega/altair
-- https://design.penpot.app/#/workspace?team-id=ee63301e-1fa7-81b1-8004-564a52d32aea&file-id=5b786374-066f-8104-8006-fe0b98605e5e
-- https://d3js.org
+## Werkzeuge
+- https://jupyter.org
+- https://pandas.pydata.org
+- https://scipy.org
+- https://github.com/jdepoix/youtube-transcript-api
+- https://chartjs.org
+- https://picocss.com/
