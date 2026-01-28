@@ -12,7 +12,14 @@ import { scaleOptions, barColors } from './app';
       type: 'bar',
       data: {
         labels: bpkData.map((row: any) => row['date_y-m']),
-        datasets: []
+        datasets: [
+          {
+            label: 'Wörter insgesamt',
+            data: bpkData.map((row: any) => row['transcript_words']),
+            backgroundColor: barColors[4],
+            hidden: true,
+          }
+        ]
       },
       options: {
         responsive: true,
@@ -31,12 +38,14 @@ import { scaleOptions, barColors } from './app';
       let k = wholeWord ? " " + keyword + " " : keyword;
       countData.push(Array.from(d.transcript.matchAll(new RegExp(k, "gi"))).length)
     });
-    chart1.data.datasets.push({ label: `${keyword}`, data: countData, backgroundColor: barColors[chart1.data.datasets.length % barColors.length] });
+    chart1.data.datasets.push({ label: `${keyword}`, data: countData, backgroundColor: barColors[chart1.data.datasets.length - 1 % barColors.length] });
     chart1.update();
   });
   document.getElementById("delete-keyword-button")?.addEventListener("click", (_) => {
-    chart1.data.datasets.pop();
-    chart1.update();
+    if (chart1.data.datasets.length > 1) {
+      chart1.data.datasets.pop();
+      chart1.update();
+    }
   });
 
   document.getElementById("switch-auto-zoom")?.addEventListener("change", (e) => {

@@ -5,33 +5,17 @@ import 'chartjs-adapter-date-fns'
 import { de } from 'date-fns/locale';
 
 export const barColors = [
-  "rgba(232,53,15,0.4)",
-  "rgba(66,67,147,0.4)",
-  "rgba(192,159,50,0.4)",
-  "rgba(0,108,60,0.4)",
-  "rgba(255,241,0,0.4)",
+  "rgba(66,67,147,0.5)",
+  "rgba(192,159,50,0.5)",
+  "rgba(0,108,60,0.5)",
+  "rgba(255,241,0,0.5)",
+  "rgba(232,53,15,0.5)",
 ];
 
 (async function () {
   const bpkData = (bpk as { data: Array<object> })["data"];
 
-  let buttonNav0 = document.getElementById("button-nav-0");
-  buttonNav0?.addEventListener("click", (_) => {
-    document.getElementById("section-0")?.scrollIntoView({ behavior: 'smooth' });
-  });
-
-
-  let buttonNav1 = document.getElementById("button-nav-1");
-  buttonNav1?.addEventListener("click", (_) => {
-    document.getElementById("section-1")?.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  let buttonNav2 = document.getElementById("button-nav-2");
-  buttonNav2?.addEventListener("click", (_) => {
-    document.getElementById("section-2")?.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  let chart = new Chart(
+  new Chart(
     document.getElementById('landing-chart') as ChartItem,
     {
       type: 'bar',
@@ -40,14 +24,15 @@ export const barColors = [
         datasets: [
           {
             label: 'Total Words',
-            data: bpkData.map((row: any) => row['transcript_words']),
-            backgroundColor: bpkData.map((_, i) => barColors[i % barColors.length]),
-            borderColor: "rgba(90, 90, 90, 1)",
-            borderWidth: 2,
-            animation: {
-              duration: 685,
-              easing: "easeInOutBack",
-              loop: true,
+            data: bpkData.map((row: any) => row['transcript_words']).reverse(),
+            backgroundColor: (c) => {
+              const gradient = c.chart.ctx.createLinearGradient(0, 0, c.chart.width, 0);
+              gradient.addColorStop(0.0, barColors[0]!);
+              gradient.addColorStop(1 / 5, barColors[1]!);
+              gradient.addColorStop(3 / 5, barColors[3]!);
+              gradient.addColorStop(4 / 5, barColors[2]!);
+              gradient.addColorStop(5 / 5, barColors[4]!);
+              return gradient;
             },
           }
         ]

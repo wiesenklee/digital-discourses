@@ -3,6 +3,7 @@ html {
     width: 100%;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
 }
 
 section {
@@ -10,8 +11,8 @@ section {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
 }
 
 article {
@@ -38,5 +39,11 @@ p {
 @media (max-width: 576px) {
     .canvas {
         padding: 4px;
+    }
+}
+
+@media (max-width: 768px) {
+    .canvas {
+        padding: 8px;
     }
 }

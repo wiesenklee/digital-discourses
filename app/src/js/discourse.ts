@@ -23,12 +23,14 @@ const climateKeywords = [
   const bpkData = (bpk as { data: Array<object> })["data"];
 
   const timeEvents = [
-    { date: new Date(2021, 9 - 1, 1), title: "Bundestagswahl" },
-    { date: new Date(2022, 2 - 1, 1), title: "Ukraine Krieg" },
-    { date: new Date(2023, 9 - 1, 1), title: "Gaza Krieg" },
-    { date: new Date(2024, 9 - 1, 1), title: "Remigration Recherche" },
-    { date: new Date(2025, 1 - 1, 1), title: "Abstimmung CDU mit AfD " },
-    { date: new Date(2025, 2 - 1, 1), title: "Bundestagswahl" },
+    { date: new Date(2020, 11 - 1, 1), title: "Youtube liefert keine Daten" },
+    { date: new Date(2021, 9 - 1, 1), title: "Bundestagswahl 2021" },
+    { date: new Date(2022, 2 - 1, 1), title: "Ukraine Invasion" },
+    { date: new Date(2022, 11 - 1, 1), title: "COP 27 - Klimakonferenz" },
+    { date: new Date(2023, 10 - 1, 1), title: "Gaza-Israel Krieg" },
+    { date: new Date(2024, 1 - 1, 1), title: "Correktiv-Recherche: Remigration" },
+    { date: new Date(2024, 9 - 1, 1), title: "Beginn von Binnen-Grenzkontrollen" },
+    { date: new Date(2025, 2 - 1, 1), title: "Bundestagswahl 2025" },
   ]
 
   let activeDate: Date | undefined = undefined;

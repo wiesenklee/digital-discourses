@@ -14,7 +14,7 @@
 
 <body>
   <main style="padding: 0">
-    <section style="padding-top: 0;">
+    <section id="start" style="padding-top: 0;">
       <div style="flex: 1; rotate: 180deg;">
         <canvas id="landing-chart"></canvas>
       </div>
@@ -27,12 +27,13 @@
           Gesellschaft und Politik.
           Wir haben an öffentlichen Daten untersucht, wie sich Themen und Diskurse in den letzten 5 Jahren
           entwickelt haben.</p>
-        <button id="button-nav-0"><span style="padding-right: 1rem;">↓</span>Reinschauen</button>
+        <button onclick="location.href='#concept'"><span style="padding-right: 1rem;">↓</span>Reinschauen</button>
       </div>
     </section>
 
-    <section id="section-0" class="container">
+    <section id="concept" class="container">
       <div>
+        <a href="#start" class="secondary">↑ Zurück</a>
         <h2>Das Konzept</h2>
         <p>
           Anhand von spezifischen Schlagwörtern und wie häufig sie in den Öffentlichen Medien genutzt werden lassen
@@ -42,12 +43,12 @@
         </p>
         <br />
       </div>
-      <div style="flex: 1; display: flex; margin-left: -1rem; margin-right: -1rem;">
-        <article style="margin-right: 1rem;">
-          <header style="text-align: center;">
-            <h3>1. Kontext</h3>
+      <div class="grid" style="min-height: 20rem; flex: 1; margin-left: -1rem; margin-right: -1rem;">
+        <article style="overflow-y: scroll; max-height: 40rem;">
+          <header style=" text-align: center;">
+            <h2>Woher</h2>
           </header>
-          <p>
+          <p style="margin: 0;">
             Aus der großen Masse an Daten, die die öffentlichen Medien produzieren,
             liegt hier der Fokus auf der <b>Regierungspressekonferenz</b>:
             <br /><br />
@@ -57,28 +58,30 @@
             So wird der mediale und politische Diskurs in einem sehr <b>regelmäßigem</b> Abstand dokumentiert.
           </p>
         </article>
-        <article style="margin-right: 1rem;">
+        <article style="overflow-y: scroll; max-height: 40rem;">
           <header style="text-align: center;">
-            <h3>2. Daten </h3>
+            <h2>Wie</h2>
           </header>
-          <p>
-            Es gibt zur Regierungspressekonferenz leider keine gut geführten <b>offiziellen</b> Archive.
-            Jedoch wird auf Youtube eine Playlist seit 2015 mit den entsprechenden Videoaufnahmen der Konferenzen
+          <p style="margin: 0;">
+            Leider gibt es keine <b>offiziellen</b> Archive wo die Transkript veröffentlicht werden.
+            Jedoch wird auf Youtube seit 2015 eine Playlist mit den entsprechenden Videoaufnahmen der Konferenzen
             gefüllt.
             <br /><br />
-            Die Transkripte werden auf Youtube automatisch generiert. Das ist nicht immer so genau.<br />
-            Von Januar 2020 bis November 2025 sind das insgesamt <b>878 verfügbare Transkripte</b>. Auffällig ist der
-            November 2020. In dem Zeitraum sind leider viele Transkripte auf Youtube nicht verfügbar.
+            Youtube bietet Transkripte an, die aber meist automatisch generiert sind. Das ist nicht immer ganz genau.
+            <br /><br />
+            Von Januar 2020 bis November 2025 sind insgesamt <b>878 Transkripte</b> verfügbar. Besonders im Dezember
+            fehlen
           </p>
         </article>
-        <article>
-          <header style="text-align: center;">
-            <h3>3. Verarbeitung </h3>
+        <article style="overflow-y: scroll; max-height: 40rem;">
+          <header style="text-align: center">
+            <h2>Was dann?</h2>
           </header>
-          <p>
+          <p style="margin: 0;">
             Für dieses Projekt sind die einzelnen Transkripte in jedem Monat zu einem großen Transkript zusammengefügt
-            worden. <br />Die Anzahl an Wörtern pro Monat liegen meist zwischen <span>60 000</span> und <span>120
-              000</span>.
+            worden.
+            <br /><br />
+            Die Anzahl an Wörtern pro Monat liegen meist zwischen <span>60 000</span> und <span>120000</span>.
             <b>Im November 2020</b> jedoch nur bei ca. 8 000, weshalb dafür <b>die Ergebnisse nicht vergleichbar</b>
             sind.
             <br /> <br />
@@ -90,12 +93,14 @@
         </article>
       </div>
       <div>
-        <button id="button-nav-1"><span style="padding-right: 1rem;">↓</span>Zur Darstellung</button>
+        <button onclick="location.href='#discourse'"><span style="padding-right: 1rem;">↓</span>Weiter zur
+          Darstellung</button>
       </div>
     </section>
 
-    <section id="section-1">
+    <section id="discourse">
       <div class="container">
+        <a href="#concept" class="secondary">↑ Zurück</a>
         <h2>Diskurse im Vergleich</h2>
         <p>
           Für die zwei prominenten Themen <b>Migration</b> und <b>Klimawandel</b> lohnt sich ein direkter Vergleich.
@@ -111,12 +116,13 @@
         </div>
       </article>
       <div class="container">
-        <button id="button-nav-2"><span style="padding-right: 16px;">↓</span>Selbst Testen</button>
+        <button onclick="location.href='#playground'"><span style="padding-right: 16px;">↓</span>Selbst Testen</button>
       </div>
     </section>
 
-    <section id="section-2">
+    <section id="playground">
       <div class="container">
+        <a href="#discourse" class="secondary">↑ Zurück</a>
         <h2>Ausprobieren</h2>
         <p>Hier können eigene, kreative Schlagwörter getestet werden - das geht ganz leicht: Durch's <b>Hinzufügen</b>
           können Daten zu einem Schlagwort festhalten und mit anderen Vergleichen. Zur
